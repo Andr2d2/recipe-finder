@@ -1,0 +1,33 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 50px 20px;
+
+    .title {
+        color: #ffffff;
+        text-transform: uppercase;
+    }
+
+    &.-search-area {
+        background-color: rgb(36, 36, 255);
+    }
+
+    &.-results {
+        .no-search {
+            .icon {
+                background: url(/src/app/assets/svg/fork.svg) no-repeat;
+                display: block;
+                height: 100px;
+                margin: 20px auto;
+                width: 100px;
+            }
+
+            .info {
+                color: #9b9b9b;
+                text-align: center;
+                width: 170px;
+            }
+        }
+    }
+}

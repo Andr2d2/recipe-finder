@@ -5,7 +5,10 @@ $font-normal:'Roboto', sans-serif;
 
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 @import './app/components/search/search.component.scss';
+@import './app/app.component.scss';
 
 body {
+    padding: 0;
+    margin: 0;
     font-family: $font-normal
 }
