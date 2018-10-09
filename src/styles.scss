@@ -1,1 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
+
+$font-normal:'Roboto', sans-serif;
+
+
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import './app/components/search/search.component.scss';
+
+body {
+    font-family: $font-normal
+}
