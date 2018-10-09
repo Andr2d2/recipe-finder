@@ -14,6 +14,8 @@ import { IRecipe } from './interfaces/irecipe';
 export class AppComponent implements OnInit {
 
   searchResult: IRecipe[] = [];
+  ingredientName: string = '';
+  showModal: boolean = false;
 
   constructor(
     private _RecipeService: RecipeService
@@ -23,12 +25,18 @@ export class AppComponent implements OnInit {
     this._RecipeService.getRecipes(ingredientName)
       .subscribe((recipes: IRecipe[]) => {
         this.searchResult = recipes;
-        console.log(this.searchResult);
       });
   }
 
   ngOnInit() {
     this._RecipeService.subjectIngredientName
-      .subscribe( ingredientName => this._getRecipes(ingredientName));
+      .subscribe(ingredientName => {
+        this._getRecipes(ingredientName);
+        this.ingredientName = ingredientName;
+      });
+  }
+
+  openModal($event: any) {
+    this.showModal = true;    
   }
 }

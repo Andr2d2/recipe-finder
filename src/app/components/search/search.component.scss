@@ -2,8 +2,6 @@ $text-color: #9b9b9b;
 $background-color: #f7f7f7;
 
 .ng-select.custom-class {
-    min-width: 500px;
-
     &::ng-deep .ng-select-container {
         background-color: $background-color;
         border-radius: 3px;
@@ -11,10 +9,13 @@ $background-color: #f7f7f7;
         color: $text-color;
         font-size: 16px;
         height: 50px;
+        margin: 0 auto;
         text-transform: uppercase;
-
+        
         .ng-value-container{
+            
             .ng-value{
+                cursor: pointer;
                 padding: 0px 20px;
             }
 

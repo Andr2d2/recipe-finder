@@ -7,11 +7,15 @@ import { AppComponent } from './app.component';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { IngredientService } from './services/ingredient/ingredient.service';
 import { SearchComponent } from './components/search/search.component';
+import { CardComponent } from './components/card/card.component';
+import { ModalComponent } from './components/modal/modal.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SearchComponent
+    SearchComponent,
+    CardComponent,
+    ModalComponent
   ],
   imports: [
     BrowserModule,

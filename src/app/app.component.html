@@ -1,12 +1,26 @@
-<section class="wrapper -search-area">
+<section class="wrapper search-area">
     <h1 class="title">Recipe finder</h1>
     <app-search class="search-field"></app-search>
 </section>
-<section class="wrapper -results">
-    <div class="no-search">
-        <span class="icon"></span>
-        <p class="info">Você ainda não realizou nenhuma busca!</p>
+<section class="wrapper results">
+    <div class="founded" 
+        *ngIf="(searchResult.length > 0); else noSearch">
+        <h2 class="list-label">Recipe made with {{ ingredientName }} in:</h2>
+        <ul class="list">
+            <li *ngFor="let result of searchResult">
+                <app-card 
+                    [recipe]="result"
+                    (moreInfo)="openModal($event)"></app-card>
+            </li>
+        </ul>
     </div>
+    <ng-template #noSearch>
+        <div class="no-search">
+            <span class="icon"></span>
+            <p class="info">Haven't searched yet!</p>
+        </div>
+    </ng-template>
 </section>
-
-
+<app-modal 
+    [show]="showModal"
+    (close)="showModal = false"></app-modal>
