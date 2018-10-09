@@ -1,0 +1,17 @@
+<div class="card">
+  <div class="header" (click)="toggle(recipe)">
+    <h2 class="title">
+      {{ recipe.strMeal }}
+    </h2>
+    <span class="arrow" [ngClass]="{'-flip' : collapse}">
+      &#8681;
+    </span>
+  </div>
+  <div class="body" *ngIf="collapse">
+    <p class="description">{{ recipe.strInstructions }}</p>
+    <button 
+      type="button" 
+      class="btn"
+      (click)="openModal()">More Info</button>
+  </div>
+</div>
