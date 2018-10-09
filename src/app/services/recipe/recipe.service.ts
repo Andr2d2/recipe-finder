@@ -13,15 +13,28 @@ import { IRecipe } from '../../interfaces/irecipe';
     providedIn: 'root'
 })
 export class RecipeService {
-
+    
     constructor(private _http: HttpClient) { }
-
+    
     subjectIngredientName = new Subject<string>();
 
     getRecipes(ingredientName: string): Observable<IRecipe[]> {
         const endpoint = `${Constants.BASE_API_URL}filter.php?i=${ingredientName}`;
 
         return this._http.get<IRecipe[]>(endpoint)
-            .pipe(map((response: any) => response.meals));
+            .pipe(map((response: any) => {
+                if (response) {
+                    return response.meals;
+                } else {
+                    return [];
+                }
+            }));
+    }
+
+    getRecipesInfo(mealName: string): Observable<IRecipe> {
+        const endpoint = `${Constants.BASE_API_URL}search.php?s=${mealName}`;
+
+        return this._http.get<IRecipe>(endpoint)
+            .pipe(map((response: any) => response.meals[0]));
     }
 }

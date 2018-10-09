@@ -16,10 +16,22 @@ describe('RecipeService', () => {
     expect(recipeService).toBeTruthy();
   });
 
-  it('search should fetch recipe by id \'52885\' ', () => {
-    recipeService.getRecipes(52885)
+  it('should have subject property defined', () => {
+    recipeService = TestBed.get(RecipeService);
+    expect(recipeService.subjectIngredientName).toBeDefined();
+  });
+
+  it('search should fetch recipe by id \'Almond Milk\' ', () => {
+    recipeService.getRecipes('Almond Milk')
       .subscribe(recipe => {
-        expect(recipe.name).toBeDefined();
+        expect(recipe).toBeDefined();
+      });
+  });
+
+  it('should fetch recipe description', () => {
+    recipeService.getRecipesInfo('Almond Milk')
+      .subscribe(recipe => {
+        expect(recipe.idMeal).toBeDefined();
       });
   });
 
