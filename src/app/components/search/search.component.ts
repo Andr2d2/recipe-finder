@@ -1,9 +1,10 @@
 import {
-  Component, 
+  Component,
   OnInit
 } from '@angular/core';
 
 import { IngredientService } from '../../services/ingredient/ingredient.service';
+import { RecipeService } from '../../services/recipe/recipe.service';
 import { IIngredients } from '../../interfaces/iingredients';
 
 @Component({
@@ -13,8 +14,10 @@ import { IIngredients } from '../../interfaces/iingredients';
 })
 export class SearchComponent implements OnInit {
 
-  constructor(private _IngredientService: IngredientService) { }
-  
+  constructor(
+    private _IngredientService: IngredientService,
+    private _RecipeService: RecipeService) { }
+
   ingredients: IIngredients[] = [];
 
   private _getIngredients() {
@@ -28,7 +31,7 @@ export class SearchComponent implements OnInit {
 
   select($event: IIngredients) {
     if ($event) {
-      console.log($event.idIngredient);
+      this._RecipeService.subjectIngredientName.next($event.strIngredient);
     }
   }
 
